@@ -12,6 +12,7 @@ module.exports = {
 
         for(const command of client.commands){
             const currentcmd = command[1]
+            if(currentcmd.category == 'dev') continue
             if(currentcategory != currentcmd.category){
                 currentcategory = currentcmd.category
                 helpmsg += `***__${currentcmd.category} commands__***\n`
