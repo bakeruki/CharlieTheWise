@@ -12,8 +12,10 @@ module.exports = {
         const BLUE = '1076581366545776690'
         const PURPLE = '1076581399865335808'
         const PINK = '1076583430722179163'
+        const YELLOW = '1076593377161781348'
+        const ORANGE = '1076593424507093013'
 
-        const colors = [GREEN, RED, BLUE, PURPLE, PINK]
+        const colors = [GREEN, RED, BLUE, PURPLE, PINK, ORANGE, YELLOW]
         
         const { ActionRowBuilder, EmbedBuilder, ButtonStyle, ButtonBuilder } = require('discord.js');
         
@@ -42,6 +44,14 @@ module.exports = {
         )
         const row2 = new ActionRowBuilder()
         .addComponents(
+            new ButtonBuilder()
+            .setCustomId('orange')
+            .setLabel('Orange')
+            .setStyle(ButtonStyle.Secondary),
+            new ButtonBuilder()
+            .setCustomId('yellow')
+            .setLabel('Yellow')
+            .setStyle(ButtonStyle.Secondary),
             new ButtonBuilder()
             .setCustomId('done')
             .setLabel('Done')
@@ -103,6 +113,22 @@ module.exports = {
                     i.reply({content: `You already have the role ${role}!`, ephemeral: true })
                 }else{
                     i.member.roles.add(PINK)
+                    i.reply({content: `The role ${role} was successfully added!`, ephemeral: true })
+                }
+            }else if(i.customId === 'yellow'){
+                const role = message.guild.roles.cache.get(YELLOW)
+                if(i.member.roles.cache.has(YELLOW)){
+                    i.reply({content: `You already have the role ${role}!`, ephemeral: true })
+                }else{
+                    i.member.roles.add(YELLOW)
+                    i.reply({content: `The role ${role} was successfully added!`, ephemeral: true })
+                }
+            }else if(i.customId === 'orange'){
+                const role = message.guild.roles.cache.get(ORANGE)
+                if(i.member.roles.cache.has(ORANGE)){
+                    i.reply({content: `You already have the role ${role}!`, ephemeral: true })
+                }else{
+                    i.member.roles.add(ORANGE)
                     i.reply({content: `The role ${role} was successfully added!`, ephemeral: true })
                 }
             }
