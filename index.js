@@ -6,7 +6,8 @@ const client = new Discord.Client({
         "Guilds",
         "GuildMessages",
         "GuildMembers",
-        "MessageContent"
+        "MessageContent",
+        "GuildMessageReactions"
     ]
 })
 
