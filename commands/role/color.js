@@ -38,19 +38,32 @@ module.exports = {
             new ButtonBuilder()
             .setCustomId('pink')
             .setLabel('Pink')
-            .setStyle(ButtonStyle.Secondary)
+            .setStyle(ButtonStyle.Secondary),
+        )
+        const row2 = new ActionRowBuilder()
+        .addComponents(
+            new ButtonBuilder()
+            .setCustomId('done')
+            .setLabel('Done')
+            .setStyle(ButtonStyle.Success)
         )
 
         const color_embed = new EmbedBuilder()
         .setColor('BLUE')
         .setDescription('Select your desired color!')
 
-        const m = await message.reply({embeds: [color_embed] , components: [row], ephemeral: true })
+        const m = await message.reply({embeds: [color_embed] , components: [row, row2], ephemeral: true })
         const iFilter = i => i.user.id === message.author.id
 
         const collector = m.createMessageComponentCollector({filter: iFilter, time: 30000})
 
         collector.on('collect', async i => {
+            if(i.customId === 'done'){
+                i.reply({content: 'Enjoy your new color!', ephemeral: true})
+                m.delete()
+                collector.stop('done')
+                return
+            }
             removeAllRoles(i.member, colors)
             if(i.customId === 'red'){
                 const role = message.guild.roles.cache.get(RED)
@@ -95,7 +108,8 @@ module.exports = {
             }
         })
 
-        collector.on('end', content => {
+        collector.on('end', (content, reason) => {
+            if(reason && reason === 'done') return
             message.reply({content: 'Timed out. Run the command again to be given roles.', ephemeral: true})
         })
     }

@@ -16,23 +16,37 @@ module.exports = {
             new ButtonBuilder()
             .setCustomId('11')
             .setLabel('Grade 11')
-            .setStyle(ButtonStyle.Primary),
+            .setStyle(ButtonStyle.Secondary),
             new ButtonBuilder()
             .setCustomId('12')
             .setLabel('Grade 12')
             .setStyle(ButtonStyle.Secondary)
+        )
+        const row2 = new ActionRowBuilder()
+        .addComponents(
+            new ButtonBuilder()
+            .setCustomId('done')
+            .setLabel('Done')
+            .setStyle(ButtonStyle.Success)
         )
 
         const roles_embed = new EmbedBuilder()
         .setColor('BLUE')
         .setDescription('Select your grade level!')
 
-        const m = await message.reply({embeds: [roles_embed] , components: [row], ephemeral: true })
+        const m = await message.reply({embeds: [roles_embed] , components: [row, row2], ephemeral: true })
         const iFilter = i => i.user.id === message.author.id
 
         const collector = m.createMessageComponentCollector({filter: iFilter, time: 30000})
 
         collector.on('collect', async i => {
+            if(i.customId === 'done'){
+                i.reply({content: 'Enjoy your new role!', ephemeral: true})
+                m.delete()
+                collector.stop('done')
+                return
+            }
+            
             if(i.customId === '11'){
                 const role = message.guild.roles.cache.get(GRADE11)
                 if(i.member.roles.cache.has(GRADE11)){
@@ -54,7 +68,8 @@ module.exports = {
             }
         })
 
-        collector.on('end', colleted => {
+        collector.on('end', (content, reason) => {
+            if(reason && reason === 'done') return
             message.reply({content: 'Timed out. Run the command again to be given roles.', ephemeral: true})
         })
     }
