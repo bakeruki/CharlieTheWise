@@ -1,6 +1,7 @@
 module.exports = {
     name: "avatar",
     category: "info",
+    description: "Gives the avatar of either yourself (without a mention) or another user (with a mention)",
     permissions: [],
     devOnly: false,
     run: async ({client, message, args}) => {

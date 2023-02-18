@@ -1,6 +1,7 @@
 module.exports = {
     name: "cock",
-    category: "memes",
+    category: "meme",
+    description: "Returns either your cock (without a mention) or the cock of someone else (with a mention) (very mature ha ha)",
     permissions: [],
     devOnly: false,
     run: async ({client, message, args}) => {

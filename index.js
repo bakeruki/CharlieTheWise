@@ -26,23 +26,6 @@ client.loadCommands(bot, false)
 client.loadEvents(bot, false)
 
 module.exports = bot
-// client.on("ready", () => {
-//     
-// })
-
-// client.on("messageCreate", (message) => {
-//     if(message.content == "sean"){
-//         message.reply("he pretty weird")
-//     }
-//     if(message.content == "jannah"){
-//         message.reply("shes the one that named me!")
-//     }
-//     if(message.content == "luqman"){
-//         message.reply("insert funny joke about luqman here")
-//     }
-// })
-
-// const welcomeChannelId = "1076243806271311933"
 
 // client.on("guildMemberAdd", async (member) => {
 //     member.guild.channels.cache.get(welcomeChannelId).send( `<@${member.id}> joined the server.`)

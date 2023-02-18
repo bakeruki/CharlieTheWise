@@ -1,6 +1,7 @@
 module.exports = {
     name: "stressrelief",
-    category: "memes",
+    category: "meme",
+    description: "Gives a nice, wholesome stress relieving gif to help with your troubles :D",
     permissions: [],
     devOnly: false,
     run: async ({client, message, args}) => {
