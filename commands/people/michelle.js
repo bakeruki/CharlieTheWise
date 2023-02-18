@@ -5,6 +5,6 @@ module.exports = {
     permissions: [],
     devOnly: false,
     run: async ({client, message, args}) => {
-        message.reply("Michelle wanted her message to say, 'I don't know.'")
+        message.reply("chicken nuggies :))")
     }
 }
