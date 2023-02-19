@@ -63,14 +63,15 @@ module.exports = {
         .setDescription('Select your desired color!')
 
         const m = await message.reply({embeds: [color_embed] , components: [row, row2], ephemeral: true })
-        const iFilter = i => i.user.id === message.author.id
 
-        const collector = m.createMessageComponentCollector({filter: iFilter, time: 30000})
+        const collector = m.createMessageComponentCollector({time: 30000})
 
         collector.on('collect', async i => {
+            if(i.user.id != message.author.id){
+                return(i.reply({content: `Please call the command yourself to get roles!`, ephemeral: true}))
+            }
             if(i.customId === 'done'){
                 i.reply({content: 'Enjoy your new color!', ephemeral: true})
-                m.delete()
                 collector.stop('done')
                 return
             }
@@ -135,6 +136,7 @@ module.exports = {
         })
 
         collector.on('end', (content, reason) => {
+            m.delete()
             if(reason && reason === 'done') return
             message.reply({content: 'Timed out. Run the command again to be given roles.', ephemeral: true})
         })
