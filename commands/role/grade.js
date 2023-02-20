@@ -5,7 +5,6 @@ module.exports = {
     permissions: [],
     devOnly: false,
     run: async ({client, message, args}) => {
-        const channel = client.channels.cache.get('1076563457958228008')
         const GRADE9 = '1076938262188400741'
         const GRADE10 = '1076938302650863816'
         const GRADE11 = '1075952912682983535'

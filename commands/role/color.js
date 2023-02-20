@@ -5,8 +5,6 @@ module.exports = {
     permissions: [],
     devOnly: false,
     run: async ({client, message, args}) => {
-        const channel = client.channels.cache.get('1076563457958228008')
-
         const GREEN = '1076581301961900109'
         const RED = '1076581337173086228'
         const BLUE = '1076581366545776690'
