@@ -22,7 +22,7 @@ module.exports = {
         )
 
         const confirm_embed = new EmbedBuilder()
-        .setColor('BLUE')
+        .setColor(0xA61E07)
         .setDescription('Are you absolutely sure? There is no cursed content, but there are images of firearms.')
 
         const m = await message.reply({embeds: [confirm_embed] , components: [row], ephemeral: true })

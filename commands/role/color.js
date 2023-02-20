@@ -57,7 +57,7 @@ module.exports = {
         )
 
         const color_embed = new EmbedBuilder()
-        .setColor('BLUE')
+        .setColor(0x2ebf06)
         .setDescription('Select your desired color!')
 
         const m = await message.reply({embeds: [color_embed] , components: [row, row2], ephemeral: true })

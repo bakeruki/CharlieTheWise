@@ -22,7 +22,7 @@ module.exports = {
         )
 
         const confirm_embed = new EmbedBuilder()
-        .setColor('BLUE')
+        .setColor(0xA61E07)
         .setDescription('Are you absolutely sure? There is very cursed (18+) content in here! Enter at your own risk.')
 
         const m = await message.reply({embeds: [confirm_embed] , components: [row], ephemeral: true })

@@ -40,7 +40,7 @@ module.exports = {
         )
 
         const roles_embed = new EmbedBuilder()
-        .setColor('BLUE')
+        .setColor(0x2ebf06)
         .setDescription('Select your grade level!')
 
         const m = await message.reply({embeds: [roles_embed] , components: [row, row2], ephemeral: true })
