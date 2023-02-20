@@ -1,13 +1,13 @@
 module.exports = {
-    name: "nsfw",
+    name: "pew",
     category: "role",
-    description: "Gives you access to Ali's Special Channel (NOT safe for work, there is very cursed stuff in here, be warned!)",
+    description: "Gives you access to Adrian's project channel. No cursed content, but contains images of firearms.",
     permissions: [],
     devOnly: false,
     run: async ({client, message, args}) => {
         const { ActionRowBuilder, EmbedBuilder, ButtonStyle, ButtonBuilder } = require('discord.js');
         
-        const accessRole = '1077080395146874912'
+        const accessRole = '1077086149341888593'
 
         const row = new ActionRowBuilder()
         .addComponents(
@@ -23,7 +23,7 @@ module.exports = {
 
         const confirm_embed = new EmbedBuilder()
         .setColor('BLUE')
-        .setDescription('Are you absolutely sure? There is very cursed (18+) content in here! Enter at your own risk.')
+        .setDescription('Are you absolutely sure? There is no cursed content, but there are images of firearms.')
 
         const m = await message.reply({embeds: [confirm_embed] , components: [row], ephemeral: true })
 
@@ -41,14 +41,14 @@ module.exports = {
                     collector.stop('done')
                 }else{
                     i.member.roles.add(accessRole)
-                    i.reply({content: `You now have access to <#1077080200988336128>. God help you... (if you clicked this by mistake, please run the command again and select No)`, ephemeral: true })
+                    i.reply({content: `You now have access to <#1076684162943160392> Pew pew!`, ephemeral: true })
                     collector.stop('done')
                 }
             }else if(i.customId === 'no'){
                 const role = message.guild.roles.cache.get(accessRole)
                 if(i.member.roles.cache.has(accessRole)){
                     i.member.roles.remove(accessRole)
-                    i.reply({content: `You've been saved... You no longer have access to the channel`, ephemeral: true })
+                    i.reply({content: `A respectable decision. You no longer have access to the channel.`, ephemeral: true })
                     collector.stop('done')
                 }else{
                     i.reply({content: `You already don't have access!`, ephemeral: true })
