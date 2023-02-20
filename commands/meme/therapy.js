@@ -11,8 +11,6 @@ module.exports = {
         let rate
 
         collector.on('collect', m => {
-            console.log(`data: ${m.content}`)
-            console.log(m.author.id + `\n` + message.author.id)
             if(m.author.id === message.author.id){
                 rate = m.content
                 collector.stop('message collected')
