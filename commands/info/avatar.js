@@ -9,7 +9,7 @@ module.exports = {
             message.reply(message.author.avatarURL(true))
         }else{
             const mention = getUserFromMention(args[0], client)
-            if(!mention) return message.reply('please mention the user to get their avatar')
+            if(!mention) return message.reply('Please mention the user to get their avatar!')
             message.reply(mention.displayAvatarURL(true))
         }
     }
