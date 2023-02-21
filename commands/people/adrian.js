@@ -5,6 +5,6 @@ module.exports = {
     permissions: [],
     devOnly: false,
     run: async ({client, message, args}) => {
-        message.reply(`Adrian is many things.. a simp.. a gamer.. he's a jack of all trades that should not be messed with.`)
+        message.reply(`Adrian is many things.. a simp.. a gamer.. he's a jack of all trades that should not be messed with. He's in your third period too.`)
     }
 }
