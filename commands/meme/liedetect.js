@@ -5,6 +5,8 @@ module.exports = {
     permissions: [],
     devOnly: false,
     run: async ({client, message, args}) => {
+        const mention = getUserFromMention(args[0], client)
+        if(!mention) return message.reply("You must ping someone to use this command!")
         if(!args[0]) return message.reply("You must ping someone to use this command!")
 
         const honesty = Math.round(Math.random() * 100)
@@ -13,7 +15,7 @@ module.exports = {
             "Really... well, at least you're slightly honest",
             "I'll take it... but you should be more honest in the future.",
             "Not bad not bad... could be improved but.. not bad..",
-            "Being too honest when dealing with emotional beings such as humans is a bad thing. Go you!",
+            "Being 100% honest when dealing with emotional beings such as humans is a bad thing. Go you!",
             "Goody two shoes detected!"
         ]
 
@@ -33,6 +35,20 @@ module.exports = {
             chosenComment = comments[5]
         }
         
-        message.reply(`<@${args[0]}>, <@${message.author.id}> just found out that you're ${honesty}% honest. ${chosenComment}`)
+        message.reply(`${args[0]}, <@${message.author.id}> just found out that you're ${honesty}% honest. ${chosenComment}`)
     }
+}
+
+function getUserFromMention(mention, client) {
+	if (!mention) return;
+
+	if (mention.startsWith('<@') && mention.endsWith('>')) {
+		mention = mention.slice(2, -1);
+
+		if (mention.startsWith('!')) {
+			mention = mention.slice(1);
+		}
+
+		return client.users.cache.get(mention);
+	}
 }
